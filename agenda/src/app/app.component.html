@@ -1,0 +1,152 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="logo"></div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse search-bar" id="navbarSupportedContent">
+    <button class="btn-add" (click)="openModalAdd(modalAddCtt)" *ngIf="contatos.length > 0">
+      <img src="../assets/ic-plus.svg"> Criar contato</button>
+    <form class="form-inline" [formGroup]="pesquisar">
+      <div class="input-group">
+        <input class="form-control" type="search" placeholder="Buscar..." aria-label="Buscar">
+        <div class="input-group-prepend" (click)="search()">
+          <span class="input-group-text btn-search"></span>
+        </div>
+      </div>
+    </form>
+  </div>
+</nav>
+
+
+<div class="container estr-no-ctt" #noCtt *ngIf="contatos.length == 0; else ctts">
+  <div class="book"></div>
+  <div class="no-ctt">
+    <p>Nenhum contato foi criado ainda.</p>
+    <button class="btn-add" (click)="openModalAdd(modalAddCtt)"><img src="../assets/ic-plus.svg"> Criar
+      contato</button>
+  </div>
+</div>
+
+<ng-template #ctts>
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Contatos</th>
+          <th scope="col">E-mail</th>
+          <th scope="col">Telefone</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contato of contatos">
+          <td class="estr-li">
+            <div class="letraInicial" [style.backgroundColor]="contato.cor"> {{ contato.nome[0] | uppercase }} </div>
+          </td>
+          <td>{{ contato.nome }}</td>
+          <td>{{ contato.email }}</td>
+          <td>{{ contato.telefone }}</td>
+          <td>
+            <div class="edit" (click)="edit(contato, modalEditCtt)"></div>
+            <div class="delete" (click)="delete(contato, modalDeleteCtt)"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>
+
+
+
+
+<ng-template #modalAddCtt>
+  <div class="modal-header">
+    <p class="modal-title pull-left">Criar novo contato</p>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="addContato" (ngSubmit)="saveContact(addContato.value)">
+      <div class="form-group">
+        <label>Nome</label>
+        <input type="text" class="form-control" formControlName="nome">
+      </div>
+      <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" class="form-control" formControlName="email">
+      </div>
+
+      <div class="form-group">
+        <label>Telefone</label>
+        <input type="tel" class="form-control" maxlength="15" formControlName="telefone" id="telefone"
+          (keyup)="mascara( $event.target.value )">
+      </div>
+
+      <div class="form-footer">
+        <button type="reset" class="btn btn-cancel" (click)="modalRef.hide()">Cancelar</button>
+        <button type="submit" class="btn btn-save ml-2" [disabled]="!addContato.valid"
+          (click)="modalRef.hide()">Salvar</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #modalEditCtt>
+  <div class="modal-header">
+    <p class="modal-title pull-left">Editar contato</p>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="addContato" (ngSubmit)="saveEdit(addContato.value)">
+      <div class="form-group d-none">
+        <label>cor</label>
+        <input type="text" class="form-control" formControlName="cor">
+      </div>
+      <div class="form-group">
+        <label>Nome</label>
+        <input type="text" class="form-control" formControlName="nome">
+      </div>
+      <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" class="form-control" formControlName="email">
+      </div>
+
+      <div class="form-group">
+        <label>Telefone</label>
+        <input type="tel" class="form-control" maxlength="15" formControlName="telefone" id="telefone"
+          (keyup)="mascara( $event.target.value )">
+      </div>
+
+      <div class="form-footer">
+        <button type="reset" class="btn btn-cancel" (click)="modalRef.hide()">Cancelar</button>
+        <button type="submit" class="btn btn-save ml-2" [disabled]="!addContato.valid"
+          (click)="modalRef.hide()">Salvar</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #modalDeleteCtt>
+  <div class="modal-header">
+    <p class="modal-title pull-left">Excluir contato</p>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body-delete">
+    <p class="text-delete">
+      Deseja realmente excluir o contato?
+    </p>    
+
+    <div class="form-footer">
+      <button type="reset" class="btn btn-cancel" (click)="modalRef.hide()">Cancelar</button>
+      <button type="submit" class="btn btn-save ml-2" (click)="confirmDelete()">Excluir</button>
+    </div>
+  </div>
+</ng-template>

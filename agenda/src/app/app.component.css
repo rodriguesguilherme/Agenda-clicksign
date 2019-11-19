@@ -1,0 +1,143 @@
+.logo {
+    width: 148px;
+    height: 32px;
+    background-image: url('../assets/ic-logo.svg');
+    background-repeat: no-repeat;
+}
+
+.btn-search {
+    width: 16px;
+    height: 32px;
+    border-left: none;
+    background-position: center;
+    background-image: url('../assets/ic-search.svg');
+    background-repeat: no-repeat;
+    background-color: #e4e7f4;
+    margin-left: -1px;
+    cursor: pointer;
+}
+
+.search-bar {
+    margin-left: 60px;
+}
+
+.search-bar input {
+    width: 900px;
+    height: 32px;
+    margin-left: 24px;
+    border-radius: 4px;
+    background-color: #e4e7f4;
+    border-right: none;
+}
+
+.btn-add {
+    width: 144px;
+    height: 32px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+    border: solid 1px rgba(255, 255, 255, 0.16);
+    background-color: #dbff90;
+    color: #fa7268;
+}
+
+.btn-add img {
+    margin-right: 5px;
+}
+
+.book {
+    width: 237px;
+    height: 200px;
+    margin: 0 auto;
+    background-image: url('../assets/ic-book.svg');
+}
+
+.no-ctt {
+    width: 238px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 24px;
+}
+
+.estr-no-ctt {
+    margin-top: 112px;
+}
+
+.btn-save {
+    width: 72px;
+    height: 32px;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+    border: solid 1px rgba(255, 255, 255, 0.16);
+    background-color: #fa7268;
+    color: #ffffff;
+}
+
+.btn-cancel {
+    color: #fa7268;
+}
+
+.form-footer {
+    width: 100%;
+    height: 63px;
+    border-top: 1px solid #c0c3d2;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    text-align: right;
+    padding: 15px;
+}
+
+.modal-body {
+    height: 300px;
+}
+
+.modal-body-delete {
+    height: 157px;
+}
+
+.text-delete {
+    margin: 20px 0 0 24px;
+}
+
+.table {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 16px;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+}
+
+.table tr:hover {
+    background-color: #fff3f2;
+}
+
+.edit, .delete {
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    float: left;
+    margin-left: 24px;
+}
+
+.edit {
+    background-image: url('../assets/ic-edit.svg');
+}
+
+.delete {
+    background-image: url('../assets/ic-delete.svg');
+}
+
+.letraInicial {
+    width: 25px;
+    height: 25px;
+    font-size: 16px;
+    padding-top: 3px;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 50px;
+}
+
+.estr-li {
+    width: 43px;
+}
